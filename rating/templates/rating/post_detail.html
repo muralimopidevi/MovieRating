@@ -1,0 +1,34 @@
+{% extends "rating/base.html" %}
+{% block content %}
+
+<div class="row justify-content-md-center">
+    <div class="col-md-8">
+        <div class="alert alert-danger" role="alert">
+            <h3 class="alert-heading"><a class="mr-2" style="text-decoration: none;text-transform: uppercase; color:#000;" href="{% url 'user-posts' post.author.username %}">{{ object.author }}</a>
+                <span class="badge badge-success"> <i class="fas fa-calendar-alt"></i> &nbsp; Date Posted : {{ object.date_posted|date:"F d, Y" }} </span>&nbsp;
+            </h3>
+            <hr>
+            <div class="row">
+                <div class="col-md-2">
+                    <img class="rounded-circle border border-dark article-img" src="{{ object.author.profile.image.url }}">
+                </div>
+                <div class="col-md-10">
+                    <p class="article-content">{{ object.content }}</p>
+                    <hr>
+                    {% if object.author == user %}
+                    <a class="btn btn-secondary  btn-sm" href="{% url 'post-update' object.id %}">Update</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-danger  btn-sm" href="{% url 'post-delete' object.id %}">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
+{% endblock content %}

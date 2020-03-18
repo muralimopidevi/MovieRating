@@ -1,0 +1,52 @@
+{% extends "rating/base.html" %}
+{% block content %}
+{% load bootstrap %}
+<div class="container-fluid">
+    <div class="row justify-content-md-center">
+        <div class="col-md-3 text-white">
+            <div class="filterbox">
+                <center>
+                    <legend class="border-bottom mb-4">FILTERS</legend>
+                </center>
+                <form method="GET">
+                    {{ filter.form|bootstrap }}
+                    <center><button type="submit" class="btn btn-outline-success btn-lg">Filter</button></center>
+                </form>
+            </div>
+
+        </div>
+        <div class="col-md-9">
+            {% for post in filter.qs %}
+            <div class="alert alert-secondary" role="alert">
+                <h3 class="alert-heading"><i class="fas fa-film"></i> &nbsp; {{ post.movie }}</h3>
+                <hr>
+                <h4> <span class="badge badge-primary"><i class="fas fa-star-half-alt"></i> &nbsp; IMBD Rating : {{ post.imbdrating }} </span>
+                    <span class="badge badge-danger"><i class="fas fa-flag"></i> &nbsp; IMBD Rating Count : {{ post.imbdratingcount }} </span>
+                    <span class="badge badge-success"> <i class="fas fa-calendar-alt"></i> &nbsp; Movie Release Year : {{ post.moviereleaseyear }} </span>
+                </h4>
+            </div>
+            {% endfor %}
+            {% if is_paginated %}
+            {% if page_obj.has_previous %}
+            <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+            {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+            <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}

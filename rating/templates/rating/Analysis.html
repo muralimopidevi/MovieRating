@@ -1,0 +1,368 @@
+{% extends "rating/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-primary text-dark mb-4">
+                <div class="card-body">
+                    <h2><i class="fas fa-2x fa-film"></i> Total Movies  &nbsp; <span class="badge badge-light">{{ movies_count }}</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-danger text-dark mb-4">
+                <div class="card-body">
+                    <h3><i class="fas fa-2x fa-star-half-alt"></i> Total Ratings &nbsp; <span class="badge badge-light">{{ post_count }}</span></h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+            <div class="card bg-success text-dark mb-4">
+                <div class="card-body">
+                    <h3><i class="fas fa-2x fa-users"></i> Total Users &nbsp; <span class="badge badge-light">{{ user_count }}</span></h3>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card mb-4">
+                <div class="card-header"><i class="fas fa-chart-pie mr-1"></i>Doughnut Chart For Count Of Each Opinions</div>
+                <div class="card-body"><canvas id="myChartOpinion" width="100%" height="35"></canvas></div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card mb-4">
+                <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Bar Chart For Count Of Each Ratings</div>
+                <div class="card-body"><canvas id="myChartRating" width="100%" height="35"></canvas></div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card mb-4">
+                <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Bar Chart For Count Of Top 10 Movies Rated</div>
+                <div class="card-body"><canvas id="myChartMovie" width="100%" height="35"></canvas></div>
+            </div>
+        </div>
+           <div class="col-lg-6">
+            <div class="card mb-4">
+                <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Area Chart For Count Of Top 10 Movie Released Year Rated</div>
+                <div class="card-body"><canvas id="myChartMovieYr" width="100%" height="35"></canvas></div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card mb-4">
+                <div class="card-header"><i class="fas fa-chart-pie mr-1"></i>Pie Chart For Count Of Top 10 Movie IMBD Rating</div>
+                <div class="card-body"><canvas id="myChartMovieImbd" width="100%" height="35"></canvas></div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card mb-4">
+                <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Bar Chart For Users Who Rated Most (Top 10) </div>
+                <div class="card-body"><canvas id="myChartMovieUser" width="100%" height="35" ></canvas></div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+<script>
+var ctx = document.getElementById('myChartOpinion');
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: {{ labels_opinion|safe }},
+        datasets: [{
+            label: 'Opinions Count',
+            data: {{ data_opinion|safe }},
+            backgroundColor: [
+                '#ff6384',
+                '#36a2eb',
+                '#ffce56',
+                '#4bc0c0',
+                '#9966ff',
+                '#ff9f40'
+            ],
+            borderColor: [
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000'
+            ],
+            borderWidth: 1,
+            hoverborderWidth:2,
+            hoverBorderColor:'#fff',
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+<script>
+var ctx = document.getElementById('myChartRating');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {{ labels_rating|safe }},
+        datasets: [{
+            label: 'Rating Count',
+            data: {{ data_rating|safe }},
+            backgroundColor: [
+                '#ff6384',
+                '#36a2eb',
+                '#ffce56',
+                '#4bc0c0',
+                '#9966ff',
+                '#ff9f40',
+                '#ff4040',
+                '#47ff40',
+                '#4056ff',
+                '#ff40c4'         
+            ],
+            borderColor: [
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000'
+            ],
+             borderWidth: 1,
+            hoverborderWidth:2,
+            hoverBorderColor:'#fff',
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+
+<script>
+var ctx = document.getElementById('myChartMovie');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {{ labels_movie|safe }},
+        datasets: [{
+            label: 'Count',
+            data: {{ data_movie|safe }},
+            backgroundColor: [
+                '#ff6384',
+                '#36a2eb',
+                '#ffce56',
+                '#4bc0c0',
+                '#9966ff',
+                '#ff9f40',
+                '#ff4040',
+                '#47ff40',
+                '#4056ff',
+                '#ff40c4'         
+            ],
+            borderColor: [
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000'
+            ],
+             borderWidth: 1,
+            hoverborderWidth:2,
+            hoverBorderColor:'#fff',
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+
+<script>
+var ctx = document.getElementById('myChartMovieYr');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: {{ labels_movie_yr|safe }},
+        datasets: [{
+            label: 'Count',
+            data: {{ data_movie_yr|safe }},
+            backgroundColor: [
+                '#ff6384',
+                '#36a2eb',
+                '#ffce56',
+                '#4bc0c0',
+                '#9966ff',
+                '#ff9f40',
+                '#ff4040',
+                '#47ff40',
+                '#4056ff',
+                '#ff40c4'         
+            ],
+            borderColor: [
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000'
+            ],
+             borderWidth: 1,
+            hoverborderWidth:2,
+            hoverBorderColor:'#fff',
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+<script>
+var ctx = document.getElementById('myChartMovieImbd');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: {{ labels_movie_imbd|safe }},
+        datasets: [{
+            label: 'Count',
+            data: {{ data_movie_imbd|safe }},
+            backgroundColor: [
+                '#ff6384',
+                '#36a2eb',
+                '#ffce56',
+                '#4bc0c0',
+                '#9966ff',
+                '#ff9f40',
+                '#ff4040',
+                '#47ff40',
+                '#4056ff',
+                '#ff40c4'
+            ],
+            borderColor: [
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000'
+            ],
+             borderWidth: 1,
+            hoverborderWidth:2,
+            hoverBorderColor:'#fff',
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+<script>
+var ctx = document.getElementById('myChartMovieUser');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {{ labels_movie_user|safe }},
+        datasets: [{
+            label: 'Count',
+            data: {{ data_movie_user|safe }},
+            backgroundColor: [
+                '#ff6384',
+                '#36a2eb',
+                '#ffce56',
+                '#4bc0c0',
+                '#9966ff',
+                '#ff9f40',
+                '#ff4040',
+                '#47ff40',
+                '#4056ff',
+                '#ff40c4'
+            ],
+            borderColor: [
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000',
+                '#000'
+            ],
+             borderWidth: 1,
+            hoverborderWidth:2,
+            hoverBorderColor:'#fff',
+        }]
+    },
+    options: {
+
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+
+    }
+});
+</script>
+{% endblock content %}
