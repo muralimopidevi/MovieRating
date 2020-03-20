@@ -1,0 +1,99 @@
+STEP-1:-
+=======
+
+Install MongoDB Database 
+-----------------------------
+URL :- https://www.mongodb.com/download-center/community
+
+Download and  install MongoDB latest version as backend from the above URL.
+
+
+Install All required Packages
+-----------------------------
+pip install -r requirements.txt
+
+
+
+STEP-2:-
+=======
+
+Open Command Promt inside the Project Main Folder " MovieRating/----> Here "
+-----------------------------------------------------------------------------
+
+then type :-
+
+i) python manage.py makemigrations 
+
+note:- The above command create the the migration file for all models(Tables) which are written models.py files in Project.
+
+
+ii) python manage.py migrate
+
+note:- It creates the all Tables in maongodb.
+
+
+iii) python manage.py createsuperuser
+
+note:- The above command asks about 
+Username:
+Email:
+paswword:
+confirm password:
+
+Example:-
+----------
+Username:eisti
+Email:eist@eisti.eu
+paswword:azert123
+confirm password:azert123
+
+just provied your details for loging as admin to the website.
+
+
+STEP-3:-
+=======
+
+Then run project by using the below command
+--------------------------------------------
+
+python manage.py runserver
+
+note:- if the above command execute it give an url for opening website
+example:- http://127.0.0.1:8000/
+
+
+STEP-4:-
+=======
+
+Initially in website don't have any information like RATING, OPINIONS, MOVIES INFORMATIONS.
+--------------------------------------------------------------------------------------------
+
+"so we need to login as admin then import data into database from CSV folder.
+
+for importing data goto the below link and login as a superuser crediantial's which is 
+
+you laready created in above STEP-2 --> iii)"
+
+http://127.0.0.1:8000/admin
+
+
+
+STEP-5:-
+=======
+login to website and import the CSV files from CSV(FOLDER)
+
+i)first upload ratingss table
+ii)seconnd uplaod opinions tables 
+iii)third upload movies table
+
+and logout/
+
+STEP-6:-
+=======
+then go to below url for Website.http://127.0.0.1:8000/
+you can find the movies info in movies menu
+
+then click in login and login with same crediantials.
+and create a review.
+
+************************Thank you********************************
