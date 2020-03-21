@@ -16,6 +16,14 @@ pip install -r requirements.txt
 
 STEP-2:-
 =======
+Delete Migrations files which are already availble in "migrations" folders in Apps like "users", "rating". 
+----------------------------------------------------------------------------------------------------------
+
+Example:-
+MovieRating/users/migrations/0001_initial.py
+MovieRating/rating/migrations/0001_initial.py
+MovieRating/rating/migrations/0002_auto_20200317_1358.py
+
 
 Open Command Promt inside the Project Main Folder " MovieRating/----> Here "
 -----------------------------------------------------------------------------
@@ -90,10 +98,26 @@ and logout/
 
 STEP-6:-
 =======
-then go to below url for Website.http://127.0.0.1:8000/
+Then go to below url for Website.
+http://127.0.0.1:8000/
 you can find the movies info in movies menu
 
 then click in login and login with same crediantials.
 and create a review.
+
+STEP-7:-
+=======
+For forget password we need to add email and password at 
+MovieRating/MovieRating/settings.py file
+end of the settings you need to change these 2 lines like this
+
+EMAIL_HOST_USER = 'youremailid@gmgg.com'
+EMAIL_HOST_PASSWORD = 'yourpassword'
+
+Instead of these below lines
+
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+
 
 ************************Thank you********************************
