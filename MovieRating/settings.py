@@ -85,15 +85,7 @@ IMPORT_EXPORT_USE_TRANSACTIONS = False
 
 DATABASES = {
     'default': {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        'ENGINE': 'djongo', #NoSQL Connection..
-=======
         'ENGINE': 'djongo',
->>>>>>> parent of 1609e95... sumbimt
-=======
-        'ENGINE': 'djongo',
->>>>>>> parent of 1609e95... sumbimt
         'NAME': 'Movie',
         'HOST': 'localhost',
         'PORT': '27017',
@@ -101,7 +93,6 @@ DATABASES = {
         'AUTH_MECHANISM': 'SCRAM-SHA-1',
     }
 }
-
 """
 DATABASES = {
     'default': {
