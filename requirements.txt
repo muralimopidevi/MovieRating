@@ -1,4 +1,4 @@
-Django==2.2.11
+Django==2.2.13
 django-bootstrap-form==3.4
 django-crispy-forms==1.8.1
 django-environ==0.4.5
