@@ -111,4 +111,8 @@ STEP-7
     EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
+# If you want to use above format Add the following Environmental Varibales in your windows.
+    EMAIL_USER -> <user@gg.com>
+    EMAIL_PASS -> <your email pass>
+
 ```
