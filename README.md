@@ -14,7 +14,7 @@ string, date etc.) and each row represents an instance of thetable. Non-relation
 tables- instead there are multiple ways to store data in NoSQL databases (Key-value, Document-based, Column-based).
 
 ## Preview
-![Project Preview](https://github.com/mopidevimu/GeoStatEisti/blob/master/ReadMe_pics/project.gif 200X200)
+![Project Preview](https://github.com/mopidevimu/MovieRating/blob/master/git-images/ezgif.com-gif-maker.gif)
 
 ## Usage
 
