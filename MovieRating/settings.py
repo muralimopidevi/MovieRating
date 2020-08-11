@@ -93,6 +93,7 @@ DATABASES = {
         'AUTH_MECHANISM': 'SCRAM-SHA-1',
     }
 }
+
 """
 DATABASES = {
     'default': {
