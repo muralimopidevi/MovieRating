@@ -63,7 +63,7 @@ service-identity==18.1.0
 six==1.15.0
 sqlparse==0.2.4
 tablib==2.0.0
-Twisted==20.3.0
+Twisted==22.1.0
 txaio==20.4.1
 Werkzeug==1.0.1
 xlrd==1.2.0
